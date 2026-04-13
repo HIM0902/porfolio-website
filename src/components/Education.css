@@ -1,0 +1,78 @@
+.education-section {
+  width: 100%;
+}
+
+.education-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edu-card {
+  padding: 2rem;
+  border-left: 4px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover {
+  border-left-color: var(--accent-cyan);
+  transform: translateX(5px);
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.institution {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.degree {
+  font-size: 1.1rem;
+  color: var(--accent-emerald);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.edu-meta {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed var(--glass-border);
+  padding-top: 1rem;
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+}
+
+.status-badge.in-progress {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.status-badge.completed {
+  color: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+}
+
+@media (max-width: 768px) {
+  .edu-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

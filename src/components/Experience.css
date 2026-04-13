@@ -1,55 +1,124 @@
-.timeline {
+.git-timeline {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
   padding-left: 2rem;
-  border-left: 2px solid var(--glass-border);
 }
 
-.timeline-item {
+/* The vertical git tree line */
+.git-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background-color: var(--glass-border);
+  border-radius: 2px;
+}
+
+.git-commit {
   position: relative;
   margin-bottom: 3rem;
 }
 
-.timeline-item:last-child {
+.git-commit:last-child {
   margin-bottom: 0;
 }
 
-.timeline-dot {
+/* Commit Node (Circle) */
+.git-node {
   position: absolute;
-  top: 1.5rem;
-  left: -2.7rem;
-  width: 1.25rem;
-  height: 1.25rem;
-  background-color: var(--bg-primary);
-  border: 3px solid var(--accent-neon);
+  left: -2.35rem; /* center on the line */
+  top: 0;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent-neon-glow);
-  z-index: 10;
+  background-color: var(--bg-primary);
+  border: 4px solid var(--accent-emerald);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
-.job-title {
-  color: var(--text-primary);
-  font-size: 1.5rem;
-  margin-bottom: 0.2rem;
+.git-commit:hover .git-node {
+  background-color: var(--accent-emerald);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.8);
 }
 
-.company {
-  color: var(--accent-neon);
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+.git-content {
+  padding: 1.5rem 2rem;
+  border-top: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.git-content:hover {
+  border-top-color: var(--accent-emerald);
+  transform: translateX(5px);
+}
+
+.git-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed var(--glass-border);
+  padding-bottom: 0.5rem;
+}
+
+.commit-hash {
+  color: var(--accent-emerald);
   font-weight: 600;
 }
 
-.impact-list {
+.commit-date {
   color: var(--text-secondary);
+}
+
+.job-title {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.company {
+  font-size: 1rem;
+  color: var(--accent-cyan);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.impact-list {
   padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .impact-list li {
-  margin-bottom: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-.highlight {
-  color: var(--text-primary);
+.impact-list li::marker {
+  color: var(--text-secondary);
+  font-size: 0.8em;
+}
+
+@media (max-width: 768px) {
+  .git-timeline {
+    padding-left: 1.5rem;
+  }
+  
+  .git-node {
+    left: -1.85rem;
+  }
+  
+  .git-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .git-content {
+    padding: 1rem;
+  }
 }

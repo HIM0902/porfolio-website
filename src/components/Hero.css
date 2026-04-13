@@ -1,101 +1,140 @@
 .hero-section {
-  min-height: 100vh;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+}
+
+.hero-content-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 5%;
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 4rem;
+  width: 100%;
 }
 
-.hero-content {
-  flex: 0 0 60%;
-  padding-right: 2rem;
-  animation: fadeIn 1s ease-out forwards;
+.hero-text-content {
+  flex: 1;
+  max-width: 650px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
 }
 
 .hero-highlight {
-  color: var(--accent-neon);
-  text-shadow: 0 0 20px var(--accent-neon-glow);
+  color: var(--accent-cyan);
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--text-secondary);
-  margin-bottom: 1rem;
-  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
-.hero-availability {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
+.hero-contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
   margin-bottom: 2.5rem;
+}
+
+.hero-contact-info span {
+  display: inline-block;
 }
 
 .hero-actions {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.hero-visual {
-  flex: 0 0 40%;
+.hero-image-content {
+  flex: 0.8;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.abstract-shape {
-  width: 300px;
-  height: 300px;
+.image-container {
+  position: relative;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, var(--accent-neon), var(--bg-primary));
-  box-shadow: 0 0 60px var(--accent-neon-glow);
-  opacity: 0.6;
-  animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite alternate;
+  z-index: 1;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  border: 4px solid var(--bg-primary);
 }
 
-@keyframes pulse {
-  0% { opacity: 0.5; transform: scale(0.95); }
-  100% { opacity: 0.8; transform: scale(1.05); }
+/* Fallback visible only if image fails to load */
+.image-placeholder-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+  border: 2px solid var(--glass-border);
+  z-index: 1;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.image-backdrop-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(20px);
 }
 
-@media (max-width: 900px) {
-  .hero-section {
+@media (max-width: 992px) {
+  .hero-content-wrapper {
     flex-direction: column-reverse;
-    justify-content: center;
     text-align: center;
+    gap: 3rem;
   }
-  .hero-content {
-    flex: 1;
-    padding-right: 0;
+  
+  .hero-contact-info {
+    justify-content: center;
   }
-  .hero-title { font-size: 3rem; }
+  
   .hero-actions {
     justify-content: center;
   }
-  .hero-visual {
-    margin-bottom: 3rem;
-  }
-  .abstract-shape {
-    width: 200px;
-    height: 200px;
+
+  .image-container {
+    width: 280px;
+    height: 280px;
   }
 }

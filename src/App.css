@@ -14,29 +14,28 @@
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-bottom: 3rem;
-  text-align: center;
-  background: linear-gradient(90deg, #fff, var(--text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-align: left;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.5rem;
+}
+
+.mono-prefix {
+  color: var(--accent-emerald);
+  margin-right: 0.5rem;
 }
 
 /* Glassmorphism Classes */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
-  border-radius: 12px;
+  border-radius: 6px; /* sharper corners for tech vibe */
   padding: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.glass-card:hover {
-  transform: translateY(-5px);
-  background: var(--bg-card-hover);
-  border-color: var(--accent-neon-glow);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-hollow);
 }
 
 /* Background effects */
@@ -47,21 +46,10 @@
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  background: radial-gradient(circle at 50% 0%, var(--accent-hollow) 0%, transparent 40%),
-              radial-gradient(circle at 100% 100%, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-  opacity: 0.8;
+  background: radial-gradient(circle at 10% 0%, rgba(0, 229, 255, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 90% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
 }
 
-/* Custom pills */
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  background-color: var(--accent-hollow);
-  color: var(--accent-neon);
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid rgba(178, 0, 255, 0.2);
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
+.mono-text {
+  font-family: var(--font-mono);
 }
