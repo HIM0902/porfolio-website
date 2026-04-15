@@ -4,7 +4,7 @@ import './Projects.css';
 
 const projectData = [
   {
-    title: 'Tech Stock & PC Hardware Price Forecaster',
+    title: 'tech-price-forecaster',
     date: 'Jan 2026 – Present',
     badges: ['Machine Learning', 'XGBoost', 'Azure Blob Storage', 'Streamlit', 'Python', 'CI/CD'],
     description: [
@@ -67,12 +67,19 @@ const Projects = () => {
       <div className="projects-flex">
         {projectData.map((project, index) => (
           <motion.div 
+            /* Removed perspective-container here */
             className="glass-card project-card-modern" 
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            // Fixed the syntax by keeping transition inside the component props
+            transition={{ type: "spring", stiffness: 300, damping: 20, delay: index * 0.1 }}
+            whileHover={{ 
+              y: -8, 
+              boxShadow: "0px 15px 30px rgba(0, 229, 255, 0.15)", 
+              borderColor: "rgba(0, 229, 255, 0.5)" 
+            }}
           >
             <div className="project-header">
               <h3 className="project-title">{project.title}</h3>

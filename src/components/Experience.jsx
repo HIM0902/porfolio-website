@@ -2,6 +2,46 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './Experience.css';
 
+// --- NEW: Terminal Typing Component ---
+const TerminalText = ({ text }) => {
+  const letters = Array.from(text);
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.5 }, // Starts after title fades in
+    }),
+  };
+
+  const child = {
+    visible: { opacity: 1, display: 'inline-block' },
+    hidden: { opacity: 0, display: 'none' },
+  };
+
+  return (
+    <motion.div 
+      className="terminal-text-container"
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+    >
+      <span className="terminal-prompt">{'>'}</span>
+      {letters.map((letter, index) => (
+        <motion.span variants={child} key={index}>
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
+      ))}
+      <motion.span 
+        animate={{ opacity: [0, 1, 0] }} 
+        transition={{ repeat: Infinity, duration: 0.8 }}
+        className="terminal-cursor"
+      />
+    </motion.div>
+  );
+};
+
 const experienceData = [
   {
     title: 'Service Tech Associate',
@@ -32,14 +72,19 @@ const experienceData = [
 const Experience = () => {
   return (
     <section className="section experience-section">
-      <motion.h2 
-        className="section-title"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <span className="mono-prefix">~/</span>Experience
-      </motion.h2>
+      <div className="experience-header">
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <span className="mono-prefix">~/</span>Experience
+        </motion.h2>
+        
+        {/* Injecting the Terminal Animation here */}
+        <TerminalText text="Executing: Tracker_Pipeline.py" />
+      </div>
       
       <div className="git-timeline">
         {experienceData.map((exp, index) => (

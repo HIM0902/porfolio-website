@@ -33,6 +33,7 @@
 }
 
 .skill-badge {
+  display: inline-block; /* CRITICAL: Allows Framer Motion to animate the Y-axis smoothly */
   background-color: rgba(16, 185, 129, 0.1); /* Emerald hollow */
   color: var(--accent-emerald);
   border: 1px solid rgba(16, 185, 129, 0.2);
