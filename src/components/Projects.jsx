@@ -11,9 +11,7 @@ const projectData = [
       'Built an end-to-end ML pipeline using XGBoost with walk-forward time-series validation achieving under 5% mean absolute percentage error across 5 semiconductor tickers (NVDA, AMD, TSM, MU, INTC).',
       'Automated daily data ingestion via GitHub Actions pulling from Yahoo Finance and SerpAPI into Azure Blob Storage; deployed interactive predictions dashboard publicly on Streamlit Cloud.',
       'Engineered 20+ time-series features (lag, rolling statistics, momentum) with Pydantic data validation; secured all credentials via GitHub Secrets and least-privilege Azure IAM following industry security standards.'
-    ],
-    github: '#',
-    live: '#'
+    ]
   },
   {
     title: 'YouTube Intelligence Platform',
@@ -24,8 +22,7 @@ const projectData = [
       'Developed validation workflows ensuring high integrity data for decision making.',
       'Created modular components aligned with system requirements to improve maintainability and performance.',
       'Documented processes and coordinated with team members to resolve data inconsistencies.'
-    ],
-    github: '#',
+    ]
   },
   {
     title: 'AI Face Recognition System',
@@ -34,15 +31,13 @@ const projectData = [
     description: [
       'Conducted system level testing, error analysis, and documentation to validate model performance.',
       'Applied pattern recognition and data evaluation techniques to improve reliability and accuracy.'
-    ],
-    github: '#'
+    ]
   },
   {
     title: 'Dead Silence (Survival AI Game)',
     date: '',
     badges: ['C#', 'Unity', 'OOP', 'Game Systems'],
-    description: 'Collaborated within an agile 5-person development team to architect and ship a complete 3D zombie survival experience in Unity. Spearheaded the core gameplay loop and state-machine-driven enemy AI pathfinding, emphasizing rigorous object-oriented design patterns to maintain an extensible and performant codebase.',
-    github: '#'
+    description: 'Collaborated within an agile 5-person development team to architect and ship a complete 3D zombie survival experience in Unity. Spearheaded the core gameplay loop and state-machine-driven enemy AI pathfinding, emphasizing rigorous object-oriented design patterns to maintain an extensible and performant codebase.'
   },
   {
     title: 'Enterprise Data & Cybersecurity Analytics',
@@ -67,13 +62,11 @@ const Projects = () => {
       <div className="projects-flex">
         {projectData.map((project, index) => (
           <motion.div 
-            /* Removed perspective-container here */
             className="glass-card project-card-modern" 
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            // Fixed the syntax by keeping transition inside the component props
             transition={{ type: "spring", stiffness: 300, damping: 20, delay: index * 0.1 }}
             whileHover={{ 
               y: -8, 
@@ -104,18 +97,8 @@ const Projects = () => {
               )}
             </div>
             
-            <div className="project-links mt-4">
-              {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm">
-                  View Code (GitHub)
-                </a>
-              )}
-              {project.live && (
-                <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
-                  Live Demo
-                </a>
-              )}
-            </div>
+            {/* The project-links div has been completely removed from here */}
+
           </motion.div>
         ))}
       </div>
